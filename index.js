@@ -11,12 +11,6 @@ class List {
 
 
 
-
-
-
-
-
-
 class Item {
     constructor(name, type) {
         this.name = name;
@@ -25,7 +19,7 @@ class Item {
 }
 
 class ListService {
-    static url =  'https://lit-crag-01942.herokuapp.com/lists'
+    static url =  'https://damp-hamlet-56287.herokuapp.com/api/lists'
 
     static getAllLists() {
         return $.get(this.url);
@@ -86,7 +80,7 @@ static deleteList(id) {
 static addItem(id) {
     for (let list of this.lists) {
         if(list._id == id) {
-            list.item.push(new Item($(`#${list._id}-item-name`).val(), $(`#${list._id}-item-type`).val()))
+            list.items.push(new Item($(`#${list._id}-item-name`).val(), $(`#${list._id}-item-type`).val()))
             ListService.updateList(list) 
                 .then(() => {
                     return ListService.getAllLists();
@@ -97,12 +91,12 @@ static addItem(id) {
     }
 }
 
-static deleteItem(listID, itemID) {
+static deleteItem(listId, itemId) {
     for (let list of this.lists) {
-        if(list._id == listID) {
+        if(list._id == listId) {
             for( let item of list.items) {
-                if(item._id == itemID){
-                    list.items.splice(list.items.indexOr(room), 1);
+                if(item._id == itemId){
+                    list.items.splice(list.items.indexOf(item), 1);
                     ListService.updateList(list)
                     .then(() => {
                         return ListService.getAllLists();
@@ -129,12 +123,11 @@ static deleteItem(listID, itemID) {
                 <div class="card">
                 <div class="row">
                 <div class="col-sm">
-                    <input type="text" id="${list._id}-item-type" class="form-control" placeholder="Item Type">
+                    <input type="text" id="${list._id}-item-name" class="form-control" placeholder="Item Name">
                 </div>
                 <div class="col-sm"
                     <input type="text" id="${list._id}-item-name" class="form-control" placeholder="Item Name">
                     </div>
-                </div>
                 </div>
                 <button id="${list._id}-new-type" onclick="DOMManager.addItem('${list._id}')" class=btn btn-primary form-control">Add</button>
                 </div>
@@ -156,8 +149,8 @@ static deleteItem(listID, itemID) {
 
 
 $('#create-new-list').click(() => {
-    DOMManager.createList($('#new-app-name').val());
-    $('#new-app-name').val(' ');
+    DOMManager.createList($('#new-list-name').val());
+    $('#new-list-name').val(' ');
 });
 
 DOMManager.getAllLists();
