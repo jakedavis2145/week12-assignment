@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+}
+
+#new-app{
+    color: antiquewhite;
+    text-align: center;
+}
+
+#create-new-list{
+    background-color: green;
+}
