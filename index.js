@@ -1,3 +1,5 @@
+
+
 class List {
     constructor(name) {
         this.name = name;
@@ -10,7 +12,6 @@ class List {
 }
 
 
-
 class Item {
     constructor(name, type) {
         this.name = name;
@@ -19,7 +20,7 @@ class Item {
 }
 
 class ListService {
-    static url =  'https://damp-hamlet-56287.herokuapp.com/api/lists'
+    static url =  'http://ancient-taiga-31359.herokuapp.com/api/houses';
 
     static getAllLists() {
         return $.get(this.url);
@@ -125,9 +126,6 @@ static deleteItem(listId, itemId) {
                 <div class="col-sm">
                     <input type="text" id="${list._id}-item-name" class="form-control" placeholder="Item Name">
                 </div>
-                <div class="col-sm"
-                    <input type="text" id="${list._id}-item-name" class="form-control" placeholder="Item Name">
-                    </div>
                 </div>
                 <button id="${list._id}-new-type" onclick="DOMManager.addItem('${list._id}')" class=btn btn-primary form-control">Add</button>
                 </div>

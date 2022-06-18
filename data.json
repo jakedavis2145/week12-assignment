@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Lunch",
+        "item": "Apple",
+        "type": "Fruit"
+
+    },
+    {
+        "name": "Breakfast",
+        "item": "Milk",
+        "type": "Drink"
+    }
+
+
+]
